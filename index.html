@@ -1,3 +1,4 @@
+index.html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,25 +6,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RecipeJS - Your Functional Cooking Companion</title>
     <link rel="stylesheet" href="style.css">
-    <!-- TODO: Link your CSS file here -->
 </head>
 <body>
-    <header>
-        <h1>🍳RecipeJS</h1>
 
-        <p>"Your Functional Cooking Companion"</p>
-        </header>
-    <main>
-        <div id="recipe-container">
+<header>
+    <h1>🍳 RecipeJS</h1>
+    <p>Your Functional Cooking Companion</p>
 
+    <!-- 🔍 SEARCH BAR (PART 4) -->
+    <div class="search-container">
+        <input
+            type="text"
+            id="search-input"
+            placeholder="Search recipes or ingredients..."
+            autocomplete="off"
+        />
+        <button id="clear-search" class="clear-btn" style="display:none">✕</button>
+    </div>
+</header>
+
+<main>
+
+    <!-- 🔹 FILTER & SORT CONTROLS -->
+    <section class="controls">
+        <div class="filters">
+            <button data-filter="all" class="active">All</button>
+            <button data-filter="easy">Easy</button>
+            <button data-filter="medium">Medium</button>
+            <button data-filter="hard">Hard</button>
+            <button data-filter="quick">Quick (&lt; 30 mins)</button>
+            <button data-filter="favorites">❤️ Favorites</button>
         </div>
-    </main>
-    <script src="app.js"></script>
-    
-    <!-- TODO: Add header section -->
-    
-    <!-- TODO: Add main section -->
-    
-    <!-- TODO: Link your JavaScript file here -->
+
+        <div class="sorts">
+            <button data-sort="none" class="active">Default</button>
+            <button data-sort="name">Name (A–Z)</button>
+            <button data-sort="time">Time (Fastest)</button>
+        </div>
+    </section>
+
+    <!-- 🔢 RECIPE COUNTER -->
+    <div class="recipe-info">
+        <p id="recipe-count">Showing 8 of 8 recipes</p>
+    </div>
+
+    <!-- 🔹 RECIPE CARDS -->
+    <div id="recipe-container"></div>
+
+</main>
+
+<script src="app.js"></script>
 </body>
 </html>

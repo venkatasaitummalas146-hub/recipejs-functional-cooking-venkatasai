@@ -1,3 +1,4 @@
+Style.css
 /* Reset and Base Styles */
 * {
     margin: 0;
@@ -21,6 +22,16 @@ header {
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+header p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
 /* Main Container */
 main {
     max-width: 1200px;
@@ -28,7 +39,30 @@ main {
     padding: 0 1rem;
 }
 
-/* Recipe Container - Flexbox Grid */
+/* 🔹 CONTROLS (PART 2) */
+.controls {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.controls button {
+    padding: 8px 14px;
+    margin: 5px;
+    border: none;
+    border-radius: 6px;
+    background-color: #eee;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.controls button.active {
+    background-color: #ff7043;
+    color: white;
+}
+
+/* Recipe Container */
 #recipe-container {
     display: flex;
     flex-wrap: wrap;
@@ -38,12 +72,12 @@ main {
 
 /* Recipe Card */
 .recipe-card {
-    background: white/* white */;
-    border-radius: 12px/* 12px */;
-    box-shadow:rgba(0,0,0,0.1) /* 0 4px 6px rgba(0,0,0,0.1) */;
-    padding:1.5rem /* 1.5rem */;
-    width:300px /* 300px */;
-    transition: 0.3s/* transform 0.3s ease, box-shadow 0.3s ease */;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    padding: 1.5rem;
+    width: 300px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .recipe-card:hover {
@@ -70,6 +104,7 @@ main {
     line-height: 1.5;
 }
 
+/* Difficulty Badges */
 .difficulty {
     padding: 0.25rem 0.75rem;
     border-radius: 20px;
@@ -78,21 +113,174 @@ main {
 }
 
 .difficulty.easy {
-    /* TODO: Add green background and dark green text */
     background-color: #d4edda;
     color: #155724;
 }
 
 .difficulty.medium {
-    background: #fff3cd;
+    background-color: #fff3cd;
     color: #856404;
-    /* TODO: Add yellow background and dark yellow text */
-    /* Use: background #fff3cd, color #856404 */
 }
 
 .difficulty.hard {
-    background: #f8d7da;
+    background-color: #f8d7da;
     color: #721c24;
-    /* TODO: Add red background and dark red text */
-    /* Use: background #f8d7da, color #721c24 */
+}
+/* ================= PART 3 ADDITIONS ================= */
+
+/* Card Actions */
+.card-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+}
+
+.toggle-btn {
+    flex: 1;
+    padding: 0.5rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background: #f8f9fa;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+/* Hidden by default */
+.steps-container,
+.ingredients-container {
+    display: none;
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.steps-container.visible,
+.ingredients-container.visible {
+    display: block;
+}
+
+.ingredients-container {
+    background: #f8f9fa;
+}
+
+.ingredients-container ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.ingredients-container li::before {
+    content: "✓ ";
+    color: #667eea;
+    font-weight: bold;
+}
+
+/* Steps */
+.steps-container {
+    background: #f0f8ff;
+}
+
+.steps-list {
+    list-style: none;
+    counter-reset: step;
+    padding-left: 0;
+}
+
+.steps-list > li {
+    counter-increment: step;
+    padding-left: 2rem;
+    position: relative;
+    margin-bottom: 0.5rem;
+}
+
+.steps-list > li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    background: #667eea;
+    color: white;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+/* Nested Steps */
+.substeps-list {
+    list-style: none;
+    margin-left: 1.5rem;
+    border-left: 2px solid #667eea;
+    padding-left: 1rem;
+}
+
+.substeps-list li::before {
+    content: "→ ";
+    color: #667eea;
+}
+/* ================= PART 4 ADDITIONS ================= */
+
+/* Search */
+.search-container {
+    max-width: 500px;
+    margin: 1.5rem auto 0;
+    position: relative;
+}
+
+#search-input {
+    width: 100%;
+    padding: 0.75rem 2.5rem 0.75rem 1rem;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+#search-input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #ff7043;
+}
+
+.clear-btn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+/* Counter */
+.recipe-info {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+/* Favorite Button */
+.recipe-card {
+    position: relative;
+}
+
+.favorite-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.favorite-btn:hover {
+    transform: scale(1.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .recipe-card {
+        width: 100%;
+    }
 }
