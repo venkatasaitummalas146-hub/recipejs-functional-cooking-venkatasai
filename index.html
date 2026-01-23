@@ -1,3 +1,4 @@
+index.html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,37 +9,52 @@
 </head>
 <body>
 
-    <header>
-        <h1>🍳 RecipeJS</h1>
-        <p>Your Functional Cooking Companion</p>
-    </header>
+<header>
+    <h1>🍳 RecipeJS</h1>
+    <p>Your Functional Cooking Companion</p>
 
-    <main>
+    <!-- 🔍 SEARCH BAR (PART 4) -->
+    <div class="search-container">
+        <input
+            type="text"
+            id="search-input"
+            placeholder="Search recipes or ingredients..."
+            autocomplete="off"
+        />
+        <button id="clear-search" class="clear-btn" style="display:none">✕</button>
+    </div>
+</header>
 
-        <!-- 🔹 FILTER & SORT CONTROLS (PART 2) -->
-        <section class="controls">
-            <div class="filters">
-                <button data-filter="all" class="active">All</button>
-                <button data-filter="easy">Easy</button>
-                <button data-filter="medium">Medium</button>
-                <button data-filter="hard">Hard</button>
-                <button data-filter="quick">Quick (&lt; 30 mins)</button>
-            </div>
+<main>
 
-            <div class="sorts">
-                <button data-sort="none" class="active">Default</button>
-                <button data-sort="name">Name (A–Z)</button>
-                <button data-sort="time">Time (Fastest)</button>
-            </div>
-        </section>
-
-        <!-- 🔹 RECIPE CARDS -->
-        <div id="recipe-container">
-            <!-- Recipe cards rendered by JS -->
+    <!-- 🔹 FILTER & SORT CONTROLS -->
+    <section class="controls">
+        <div class="filters">
+            <button data-filter="all" class="active">All</button>
+            <button data-filter="easy">Easy</button>
+            <button data-filter="medium">Medium</button>
+            <button data-filter="hard">Hard</button>
+            <button data-filter="quick">Quick (&lt; 30 mins)</button>
+            <button data-filter="favorites">❤️ Favorites</button>
         </div>
 
-    </main>
+        <div class="sorts">
+            <button data-sort="none" class="active">Default</button>
+            <button data-sort="name">Name (A–Z)</button>
+            <button data-sort="time">Time (Fastest)</button>
+        </div>
+    </section>
 
-    <script src="app.js"></script>
+    <!-- 🔢 RECIPE COUNTER -->
+    <div class="recipe-info">
+        <p id="recipe-count">Showing 8 of 8 recipes</p>
+    </div>
+
+    <!-- 🔹 RECIPE CARDS -->
+    <div id="recipe-container"></div>
+
+</main>
+
+<script src="app.js"></script>
 </body>
 </html>
